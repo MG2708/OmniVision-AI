@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cool">
+        <nav id="navbar">
+            <div id="logo">
+                <img src="logo2.png" alt="No Picture">
+            </div>
+        </nav>
+
+        <section id="home">
+            <h1 class="primary">IMAGE CAPTIONING</h1>
+            <!-- <div class="up">
+                <input type="file" onchange="loadFile(event)">
+                <img id="output" height="350" width="500" />
+            </div> -->
+
+            <form class="form-inline up" method="POST" action="/" enctype="multipart/form-data">
+                <label for="file" accept="image/*" name="image" id="file" id="border" style="cursor: pointer;">Upload
+                    Image</label>
+                <input class="form-control" type="file" name="userfile" placeholder="Your image" style="display: none;">
+                <button type="submit" class="btn btn-primary"> Submit</button>
+            </form>
+
+            <br>
+
+            {% if your_result %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{your_result['image']}}">
+                </div>
+                <div class="col-sm-8">
+                    <p class="text"> Generated Caption : </p>
+                    <b>{{ your_result['caption'] }} </b>
+                    <b>
+                        <audio controls autoplay>
+                            <source src="{{your_result['audio']}}" type="audio/mpeg">
+                        </audio>
+                    </b>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+</body>
+
+</html>

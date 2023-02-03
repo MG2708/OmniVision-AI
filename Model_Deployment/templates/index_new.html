@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>OmniVision | Image Captioning</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/RmNRLTdLZLa1kG0ayo6qYciWgyX1dxfzJPvhL_fm0MagZGfHVDe0P1sZnunQapCweaxG7l-m3YkHyK4CBKIMgWrkhRitrXGLxGbi0P_6rxxmRaBFLkh6j1FPJf8Ky56UlRqg3VuOQIk=s150-p-k">
+	<style>
+
+		body {
+			background: #F6F5F5;
+			font: 'Open Sans';
+			overflow: hidden;
+		}
+
+		.outer-container {
+			background-color: black;
+			display: flex;
+		}
+
+		.project-logo {
+			width: 15%;
+			height: 15%;
+			filter: invert(1);
+		}
+
+		.container {
+			background-color: white;
+			height: 100vh;
+		}
+
+		.heading {
+			font-weight: 100;
+			font-size: 3.5rem;
+			text-shadow: 1px 1px 5px black;
+			display: flex;
+			justify-content: center;
+		}
+
+		.sub-heading{
+			font-size: 1.2rem;
+			display: flex;
+			justify-content: center;
+		}
+
+
+		.form-inline {
+			margin-bottom: 30px;
+			justify-content: start;
+		}
+		label{
+			justify-content: start;
+		}
+
+		.form-control {
+			padding: 0.2rem 0.25rem;
+			display: block;
+		}
+
+		.form-select{
+		    height: 36px;
+		}
+
+		.btn{
+			width: 30%;
+		}
+
+		ul {
+			display: flex;
+			margin-top: 15px;
+
+		}
+
+		li {
+			margin: 0 15px;
+			list-style: none;
+			color: white;
+		}
+
+
+		img {
+			height: 200px;
+			width:auto;
+		}
+
+		.caption-headline {
+			font-size: 32px;
+			font-style: italic;
+		}
+		.caption{
+			font-weight: 600;
+		}
+
+		.font-italic {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			width: 30%;
+			text-align: center;
+		}
+	</style>
+
+
+</head>
+
+<body>
+	<div class="outer-container">
+		<img class="project-logo"
+			src="https://lh3.googleusercontent.com/3aN-nh3nuBUF2x-a6xCm1snFQIKpMbGArROWKQpkGGMtEQ_9gBgy96wNdCwMZJ3RqADzFFBN96dzujICY3MnOk0RV_KUnAxYRZ0xdgoTZe78GdITXRCM9OOuj8J0eq2Q0amRcp8a4no=w2400">
+	</div>
+	<div class="container">
+
+		<h1 class="heading"> Image Captioning</h1>
+		<p class="sub-heading"> Upload your image to generate a caption... </p>
+
+		<div class="row">
+
+			<div class="col-6">
+				<form class="form-inline" method="POST" action="/" enctype="multipart/form-data">
+					<label class="w-100 my-3 justify-content-start"><b> Browse Image </b></label>
+					<input class="w-75 form-control" type="file" name="userfile">
+					<select class="w-75 my-3 form-select" name="lang">
+						<option selected>Select Caption Language</option>
+						<option value="en">English</option>
+						<option value="hi">Hindi</option>
+						<option value="mr">Marathi</option>
+						<option value="te">Telugu</option>
+						<option value="gu">Gujarati</option>
+						<option value="ta">Tamil</option>
+						<option value="ml">Malayalam</option>
+						<option value="kn">Kannada</option>
+						<option value="de">German</option>
+						<option value="fr">French</option>
+						<option value="es">Spanish</option>
+
+					</select>
+					<button type="submit" class="btn btn-primary"> Submit</button>
+				</form>
+			</div>
+
+			<div class="col-6 mt-3">
+				{% if your_result %}
+				<div class="row">
+					<img src="{{your_result['image']}}">
+				</div>
+				<div class="row">
+					<p class="caption-headline mb-1 col-12 px-0"> Generated Caption: </p>
+					<p class="caption col-12 px-0">{{ your_result['caption'] }} </p>
+					<audio controls autoplay>
+						<source src="{{your_result['audio']}}" type="audio/mpeg">
+					</audio>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<div style="position: relative">
+			<p class="font-italic"> © 2022 - SIT Pune - Team OmniVision</p>
+		</div>
+	</div>
+
+</body>
+
+</html>
