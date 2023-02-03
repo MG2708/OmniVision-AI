@@ -34,7 +34,7 @@ def marks():
         name="test"+time+".mp3"
         #name=`test${time}.mp3
         gTTS(caption,lang=l).save(name)
-        shutil.move(name, "C:/Users/gargm/Desktop/Projects/5th Technovation Hackathon SU/Model_Deployment/static/"+name)
+        shutil.move(name, "./static/"+name)
         audio="./static/"+name
         result_dic = {
         'image' : path,
